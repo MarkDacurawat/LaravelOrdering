@@ -24,6 +24,6 @@ Route::post('/burgers', [BurgerController::class,'store'])->name('burgers.store'
 Route::delete('/burgers/{id}', [BurgerController::class, 'destroy'])->name('burgers.destroy')->middleware('auth');;
 Route::get('/burgers/{id}', [BurgerController::class,'show'])->name('burgers.show')->middleware('auth');;;
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');;
